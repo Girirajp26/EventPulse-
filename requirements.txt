@@ -1,0 +1,15 @@
+# Core Dependencies
+openai>=1.0.0
+flask==3.0.0
+python-dotenv==1.0.0
+
+# Data Processing
+pandas==2.1.4
+openpyxl==3.1.2
+numpy==1.26.2
+
+# Data Visualization (if running analysis in Python)
+matplotlib==3.8.2
+
+# API and Web
+flask-cors==4.0.0
