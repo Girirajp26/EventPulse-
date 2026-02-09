@@ -1,110 +1,142 @@
-{
-  "timestamp": "2026-02-06T20:43:59.052461",
-  "org_name": "Society of Indian Americans",
+﻿{
+  "timestamp": "2026-02-08T14:30:00.000000",
+  "org_name": "TechEvents Demo",
   "data_summary": {
-    "total_events": 4,
-    "date_range": "Nov 2024 to Apr 2025",
+    "total_events": 8,
+    "date_range": "Sep 2025 to Feb 2026",
     "event_types": {
-      "Cultural Show": 3,
-      "Cultural Festival": 1
+      "Conference": 2,
+      "Workshop": 3,
+      "Networking": 2,
+      "Hackathon": 1
     },
-    "avg_attendance": 289.0,
-    "total_attendees": 1156,
-    "total_registered": 1356,
-    "attendance_rate": 85.3,
-    "total_budget": 4560.54,
-    "avg_budget_per_event": 1140.14,
-    "cost_per_attendee": 3.95,
-    "avg_cost_per_attendee": 9.12,
-    "best_performing_event": "Mock Mehndi 2025",
-    "highest_attendance": 339,
-    "best_conversion_event": "Mock Mehndi 2025",
-    "best_conversion_rate": 89.2,
+    "avg_attendance": 312,
+    "total_attendees": 2496,
+    "total_registered": 2890,
+    "attendance_rate": 86.4,
+    "total_budget": 18750.00,
+    "avg_budget_per_event": 2343.75,
+    "cost_per_attendee": 7.51,
+    "avg_cost_per_attendee": 8.25,
+    "best_performing_event": "AI Innovation Summit",
+    "highest_attendance": 425,
+    "best_conversion_event": "AI Innovation Summit",
+    "best_conversion_rate": 94.4,
     "events": [
       {
-        "name": "Bollywood Blackout",
-        "type": "Cultural Show",
-        "date": "2024-11-10",
-        "expected": 357,
-        "actual": 317,
-        "attendance_rate": 88.8
+        "name": "AI Innovation Summit",
+        "type": "Conference",
+        "date": "2026-02-01",
+        "expected": 450,
+        "actual": 425,
+        "attendance_rate": 94.4,
+        "budget": 4200.00,
+        "cost_per_attendee": 9.88
       },
       {
-        "name": "Mock Mehndi 2024",
-        "type": "Cultural Show",
-        "date": "2024-11-15",
-        "expected": 337,
-        "actual": 282,
-        "attendance_rate": 83.7,
-        "budget": 2919.74,
-        "cost_per_attendee": 10.35
+        "name": "Cloud Architecture Workshop",
+        "type": "Workshop",
+        "date": "2026-01-18",
+        "expected": 120,
+        "actual": 108,
+        "attendance_rate": 90.0,
+        "budget": 1500.00,
+        "cost_per_attendee": 13.89
       },
       {
-        "name": "Holi Whiteout",
-        "type": "Cultural Festival",
-        "date": "2025-03-23",
-        "expected": 282,
-        "actual": 218,
-        "attendance_rate": 77.3,
-        "budget": 1640.8,
-        "cost_per_attendee": 7.53
+        "name": "Startup Networking Night",
+        "type": "Networking",
+        "date": "2026-01-10",
+        "expected": 200,
+        "actual": 187,
+        "attendance_rate": 93.5,
+        "budget": 1800.00,
+        "cost_per_attendee": 9.63
       },
       {
-        "name": "Mock Mehndi 2025",
-        "type": "Cultural Show",
-        "date": "2025-04-19",
-        "expected": 380,
-        "actual": 339,
-        "attendance_rate": 89.2
+        "name": "DevOps Bootcamp",
+        "type": "Workshop",
+        "date": "2025-12-15",
+        "expected": 150,
+        "actual": 132,
+        "attendance_rate": 88.0,
+        "budget": 1650.00,
+        "cost_per_attendee": 12.50
+      },
+      {
+        "name": "Winter Hackathon 2025",
+        "type": "Hackathon",
+        "date": "2025-12-02",
+        "expected": 300,
+        "actual": 278,
+        "attendance_rate": 92.7,
+        "budget": 3500.00,
+        "cost_per_attendee": 12.59
+      },
+      {
+        "name": "Tech Career Fair",
+        "type": "Networking",
+        "date": "2025-11-08",
+        "expected": 500,
+        "actual": 412,
+        "attendance_rate": 82.4,
+        "budget": 2800.00,
+        "cost_per_attendee": 6.80
+      },
+      {
+        "name": "Python Masterclass",
+        "type": "Workshop",
+        "date": "2025-10-20",
+        "expected": 180,
+        "actual": 156,
+        "attendance_rate": 86.7,
+        "budget": 1200.00,
+        "cost_per_attendee": 7.69
+      },
+      {
+        "name": "Annual Tech Conference",
+        "type": "Conference",
+        "date": "2025-09-15",
+        "expected": 550,
+        "actual": 498,
+        "attendance_rate": 90.5,
+        "budget": 2100.00,
+        "cost_per_attendee": 4.22
       }
-    ],
-    "demographics": {
-      "Freshman": 519,
-      "Sophomore": 377,
-      "Junior": 219,
-      "Senior": 96,
-      "Graduate": 74,
-      "Alumni": 20
-    },
-    "engagement_score": {
-      "score": 79.7,
-      "grade": "B+",
-      "breakdown": {
-        "attendance": 40,
-        "consistency": 15.2,
-        "growth": 6.5,
-        "efficiency": 18
-      }
-    }
-  },
-  "ai_insights": "**1. Executive Summary**\n\nThe Society of Indian Americans hosted four events from November 2024 through April 2025, achieving an average attendance rate of 85.3% with \"Mock Mehndi 2025\" being the top performer in terms of attendance and conversion rate. Despite a commendable overall engagement grade of B+, there is room for improvement in budget efficiency and audience targeting to enhance future event success.\n\n**2. Key Performance Indicators**\n\n- *Overall Attendance Performance*:\n  - Total Registrations: 1,356\n  - Total Attendees: 1,156\n  - Average Attendance Rate: 85.3%\n  \n- *Best and Worst Performing Events*:\n  - Best: \"Mock Mehndi 2025\" with 89.2% attendance rate and highest conversion\n  - Worst: \"Holi Whiteout\" with a 77.3% attendance rate\n  \n- *Trend Analysis*:\n  - Consistent high attendance rates in Cultural Shows\n  - Decline in attendance for festival-type events (\"Holi Whiteout\")\n\n**3. Event Type Analysis**\n\n- *Cultural Show*:\n  - Performed better with higher attendance and conversion rates.\n  - Likely driven by structured programming and specific interest.\n  \n- *Cultural Festival*:\n  - Lower attendance possibly due to event type flexibility and timing.\n\n**4. Attendance Patterns & Trends**\n\n- *Seasonal Patterns*:\n  - Higher attendance during academic start and end months (Nov and Apr)\n  \n- *Growth Trends*:\n  - Static attendance with slight variances indicating stable interest.\n\n- *Conversion Rates*:\n  - Highest at 89.2% during \"Mock Mehndi 2025,\" indicating effective audience retention for certain themes.\n\n**5. Predictions for Future Events**\n\n- *Cultural Shows*: Expected to maintain high performance with anticipated attendance rates above 85% if strategic timing and themes are utilized.\n- *Cultural Festivals*: Required innovation in engagement strategies; likely to remain below 80% if unchanged.\n\n**6. Financial Analysis**\n\n- *Budget Efficiency*:\n  - Total Budget: $4,560.54, resulting in an average of $1,140.14 per event.\n  - Significant discrepancy in \"Mock Mehndi 2024,\" indicating potential overspending.\n  \n- *Cost Per Attendee Trends*:\n  - Average: $9.12; optimal cost achieved in \"Holi Whiteout\" at $7.53.\n  \n- *ROI Recommendations*:\n  - Implement cost-control measures for high-budget events.\n  - Focus on higher engagement events to balance low attendance costs.\n\n**7. Audience Insights**\n\n- *Demographics Breakdown*:\n  - Primarily underclassmen (Freshman 45%, Sophomore 32.6%)\n  - Minimal Alumni (1.7%), indicating untapped potential in broader community engagement.\n\n- *Targeting Recommendations*:\n  - Develop programs targeting Juniors and Seniors to balance attendee demographics.\n  - Engage Alumni via special invites or an \"Alumni Night.\"\n\n**8. Strategic Recommendations**\n\n1. **Prioritize Event Promotion**: Focus marketing strategies on \"Mock Mehndi\" themes and similar events proven to attract larger audiences and higher engagement.\n   \n2. **Budget Optimization**: Implement oversight and cost control for budgeting, particularly for events with lower attendance like \"Holi Whiteout.\"\n\n3. **Enhance Festival Experience**: Introduce new engagement tactics such as interactive components or prominent guest appearances during Cultural Festivals to drive attendance.\n\n4. **Diversify Event Types**: Expand offerings beyond Cultural Shows and Festivals to include workshops, seminars, or collaborations with broader student groups to diversify interest.\n\n5. **Strengthen Alumni Relations**: Develop initiatives to engage Alumni, potentially increasing networking opportunities and creating ambassadors to advocate for events within their networks.\n\nThis structured analysis offers a comprehensive approach to bolstering the Society of Indian Americans' future events by leveraging data-driven strategies targeting improved performance and engagement.",
-  "predictions": {
-    "Cultural Show": {
-      "avg_attendance": 313.0,
-      "attendance_rate": 87.3,
-      "sample_size": 3,
-      "min_attendance": 282,
-      "max_attendance": 339,
-      "avg_budget": 2919.74,
-      "avg_cost_per_attendee": 10.35
-    },
-    "Cultural Festival": {
-      "avg_attendance": 218.0,
-      "attendance_rate": 77.3,
-      "sample_size": 1,
-      "min_attendance": 218,
-      "max_attendance": 218,
-      "avg_budget": 1640.8,
-      "avg_cost_per_attendee": 7.53
-    }
+    ]
   },
   "demographics": {
-    "Freshman": 519,
-    "Sophomore": 377,
-    "Junior": 219,
-    "Senior": 96,
-    "Graduate": 74,
-    "Alumni": 20,
-    "Other": 0
-  }
+    "Software Engineers": 892,
+    "Students": 724,
+    "Product Managers": 356,
+    "Data Scientists": 298,
+    "Designers": 226
+  },
+  "predictions": {
+    "Conference": {
+      "avg_attendance": 462,
+      "attendance_rate": 92.5,
+      "avg_cost_per_attendee": 7.05,
+      "sample_size": 2
+    },
+    "Workshop": {
+      "avg_attendance": 132,
+      "attendance_rate": 88.2,
+      "avg_cost_per_attendee": 11.36,
+      "sample_size": 3
+    },
+    "Networking": {
+      "avg_attendance": 300,
+      "attendance_rate": 88.0,
+      "avg_cost_per_attendee": 8.22,
+      "sample_size": 2
+    },
+    "Hackathon": {
+      "avg_attendance": 278,
+      "attendance_rate": 92.7,
+      "avg_cost_per_attendee": 12.59,
+      "sample_size": 1
+    }
+  },
+  "ai_insights": "## Executive Summary\n\nEventPulse analyzed 8 events with **2,496 total attendees** achieving an impressive **86.4% attendance rate**. Your tech community events demonstrate strong engagement with conferences leading performance metrics.\n\n## Key Findings\n\n**Top Performers:**\n- AI Innovation Summit achieved exceptional 94.4% attendance with 425 attendees\n- Startup Networking Night exceeded expectations at 93.5% conversion\n- Winter Hackathon drew strong participation with 278 developers\n\n**Optimization Opportunities:**\n- Tech Career Fair had lower conversion (82.4%) - consider targeted outreach\n- Workshop attendance averages 132 - try offering virtual options to boost numbers\n\n## Strategic Recommendations\n\n1. **Scale conference events** - Both conferences exceeded 90% attendance rates\n2. **Optimize workshop pricing** - Higher cost-per-attendee suggests room for efficiency\n3. **Leverage hackathon momentum** - 92.7% rate indicates strong developer interest\n4. **Implement reminder campaigns** - Could push overall rate above 90%\n\n## Financial Insights\n\nWith $18,750 total investment across 8 events, you achieved $7.51 cost-per-attendee. Conferences deliver best ROI with largest audiences at moderate per-person costs. Consider allocating more budget to high-performing event types."
 }
