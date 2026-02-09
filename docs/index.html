@@ -1,0 +1,360 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventPulse | AI-Powered Event Analytics</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <!-- SVG Gradient Definition -->
+    <svg style="position: absolute; width: 0; height: 0;">
+        <defs>
+            <linearGradient id="scoreGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#3b82f6" />
+                <stop offset="50%" stop-color="#6366f1" />
+                <stop offset="100%" stop-color="#8b5cf6" />
+            </linearGradient>
+        </defs>
+    </svg>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <p>Loading Dashboard...</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="dashboard-header">
+            <div class="header-content">
+                <div class="brand">
+                    <div class="logo-container">
+                        <div class="logo-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <div class="logo-text">
+                            <h1>Event<span class="logo-accent">Pulse</span></h1>
+                            <p class="subtitle">AI-Powered Event Intelligence</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="action-btn" onclick="toggleTheme()" title="Toggle Theme" id="themeBtn">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="action-btn" onclick="window.print()" title="Print Report">
+                        <i class="fas fa-print"></i>
+                    </button>
+                    <button class="action-btn" onclick="exportData()" title="Export Data">
+                        <i class="fas fa-download"></i>
+                    </button>
+                    <button class="action-btn primary" onclick="refreshDashboard()" title="Refresh" id="refreshBtn">
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="header-meta-bar">
+                <div class="meta-item">
+                    <i class="fas fa-building"></i>
+                    <span id="orgName">Your Organization</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-calendar-range"></i>
+                    <span id="dateRange">--</span>
+                </div>
+                <div class="meta-item status-badge">
+                    <span class="status-dot"></span>
+                    <span>Live</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Executive Summary Banner -->
+        <section class="summary-banner animate-in" style="--delay: 0.1s">
+            <div class="summary-content">
+                <div class="summary-icon"><i class="fas fa-lightbulb"></i></div>
+                <div class="summary-text">
+                    <h3>Executive Summary</h3>
+                    <p id="executiveSummary">Analyzing event performance data...</p>
+                </div>
+            </div>
+            <div class="summary-actions">
+                <button class="summary-action-btn" onclick="scrollToInsights()">
+                    <i class="fas fa-arrow-down"></i> View Insights
+                </button>
+            </div>
+        </section>
+
+        <!-- Quick Stats Bar -->
+        <section class="quick-stats animate-in" style="--delay: 0.15s">
+            <div class="quick-stat">
+                <span class="quick-stat-value" id="quickEvents">0</span>
+                <span class="quick-stat-label">Events</span>
+                <div class="quick-stat-bar"><div class="quick-stat-fill" style="width: 100%"></div></div>
+            </div>
+            <div class="quick-stat">
+                <span class="quick-stat-value" id="quickAttendees">0</span>
+                <span class="quick-stat-label">Attendees</span>
+                <div class="quick-stat-bar"><div class="quick-stat-fill" style="width: 85%"></div></div>
+            </div>
+            <div class="quick-stat">
+                <span class="quick-stat-value" id="quickRate">0%</span>
+                <span class="quick-stat-label">Avg Rate</span>
+                <div class="quick-stat-bar"><div class="quick-stat-fill" id="rateBar" style="width: 0%"></div></div>
+            </div>
+            <div class="quick-stat">
+                <span class="quick-stat-value" id="quickBudget"></span>
+                <span class="quick-stat-label">Budget</span>
+                <div class="quick-stat-bar financial"><div class="quick-stat-fill" style="width: 75%"></div></div>
+            </div>
+        </section>
+
+        <!-- Primary KPI Cards -->
+        <section class="kpi-section">
+            <div class="kpi-card animate-in" style="--delay: 0.2s">
+                <div class="kpi-icon"><i class="fas fa-calendar-check"></i></div>
+                <div class="kpi-content">
+                    <div class="kpi-label">Total Events</div>
+                    <div class="kpi-value" id="totalEvents">--</div>
+                    <div class="kpi-progress"><div class="kpi-progress-bar" style="width: 100%"></div></div>
+                </div>
+                <div class="kpi-trend up"><i class="fas fa-arrow-trend-up"></i></div>
+            </div>
+            <div class="kpi-card animate-in" style="--delay: 0.25s">
+                <div class="kpi-icon"><i class="fas fa-users"></i></div>
+                <div class="kpi-content">
+                    <div class="kpi-label">Total Attendees</div>
+                    <div class="kpi-value" id="totalAttendees">--</div>
+                    <div class="kpi-progress"><div class="kpi-progress-bar" style="width: 85%"></div></div>
+                </div>
+                <div class="kpi-trend up"><i class="fas fa-arrow-trend-up"></i></div>
+            </div>
+            <div class="kpi-card animate-in" style="--delay: 0.3s">
+                <div class="kpi-icon"><i class="fas fa-chart-simple"></i></div>
+                <div class="kpi-content">
+                    <div class="kpi-label">Average Attendance</div>
+                    <div class="kpi-value" id="avgAttendance">--</div>
+                    <div class="kpi-progress"><div class="kpi-progress-bar" style="width: 70%"></div></div>
+                </div>
+            </div>
+            <div class="kpi-card highlight animate-in" style="--delay: 0.35s">
+                <div class="kpi-icon"><i class="fas fa-bullseye"></i></div>
+                <div class="kpi-content">
+                    <div class="kpi-label">Attendance Rate</div>
+                    <div class="kpi-value" id="attendanceRate">--%</div>
+                    <div class="kpi-progress highlight"><div class="kpi-progress-bar" id="attendanceProgress" style="width: 0%"></div></div>
+                </div>
+                <div class="kpi-badge"><i class="fas fa-fire"></i></div>
+            </div>
+        </section>
+
+        <!-- Financial KPI Cards -->
+        <section class="kpi-section financial-kpis" id="financialKpis" style="display: none;">
+            <div class="kpi-card financial animate-in" style="--delay: 0.4s">
+                <div class="kpi-icon"><i class="fas fa-sack-dollar"></i></div>
+                <div class="kpi-content">
+                    <div class="kpi-label">Total Budget</div>
+                    <div class="kpi-value" id="totalBudget">--</div>
+                </div>
+            </div>
+            <div class="kpi-card financial animate-in" style="--delay: 0.45s">
+                <div class="kpi-icon"><i class="fas fa-user-tag"></i></div>
+                <div class="kpi-content">
+                    <div class="kpi-label">Cost Per Attendee</div>
+                    <div class="kpi-value" id="costPerAttendee">--</div>
+                </div>
+                <div class="kpi-trend down good"><i class="fas fa-arrow-trend-down"></i></div>
+            </div>
+            <div class="kpi-card financial animate-in" style="--delay: 0.5s">
+                <div class="kpi-icon"><i class="fas fa-coins"></i></div>
+                <div class="kpi-content">
+                    <div class="kpi-label">Avg Budget/Event</div>
+                    <div class="kpi-value" id="avgBudgetEvent">--</div>
+                </div>
+            </div>
+            <div class="kpi-card financial best-event animate-in" style="--delay: 0.55s">
+                <div class="kpi-icon"><i class="fas fa-crown"></i></div>
+                <div class="kpi-content">
+                    <div class="kpi-label">Top Performer</div>
+                    <div class="kpi-value kpi-value-sm" id="bestEvent">--</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Insights Section -->
+        <section class="insights-section animate-in" id="insightsSection" style="--delay: 0.4s">
+            <div class="section-header">
+                <h2><i class="fas fa-brain"></i> Strategic Insights</h2>
+                <div class="section-actions">
+                    <span class="section-badge glow">AI-Powered</span>
+                    <button class="icon-btn" onclick="toggleInsights()" id="insightsToggle" title="Toggle">
+                        <i class="fas fa-chevron-up"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="insights-card" id="aiInsights">
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p class="loading-text">Awaiting Analysis</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Analytics Charts -->
+        <section class="analytics-section animate-in" style="--delay: 0.5s">
+            <div class="section-header">
+                <h2><i class="fas fa-chart-mixed"></i> Performance Analytics</h2>
+                <div class="section-actions">
+                    <span class="section-badge">Interactive</span>
+                </div>
+            </div>
+            <div class="chart-grid">
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h3>Event Distribution</h3>
+                        <span class="chart-subtitle">By Category</span>
+                    </div>
+                    <canvas id="eventTypeChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h3>Attendance Trends</h3>
+                        <span class="chart-subtitle">Over Time</span>
+                    </div>
+                    <canvas id="attendanceTimeChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h3>Expected vs Actual</h3>
+                        <span class="chart-subtitle">Performance Gap</span>
+                    </div>
+                    <canvas id="expectedVsActualChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h3>Conversion Rates</h3>
+                        <span class="chart-subtitle">By Event</span>
+                    </div>
+                    <canvas id="attendanceRateChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Year-over-Year Comparison -->
+        <section class="yoy-section animate-in" id="yoySection" style="display: none; --delay: 0.52s">
+            <div class="section-header">
+                <h2><i class="fas fa-code-compare"></i> Year-over-Year Comparison</h2>
+                <div class="section-actions">
+                    <span class="section-badge">Recurring Events</span>
+                </div>
+            </div>
+            <div class="yoy-container">
+                <div class="yoy-cards" id="yoyCards">
+                    <!-- YoY cards will be inserted here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Demographics Section -->
+        <section class="demographics-section animate-in" id="demographicsSection" style="display: none; --delay: 0.55s">
+            <div class="section-header">
+                <h2><i class="fas fa-people-group"></i> Audience Demographics</h2>
+                <span class="section-badge">Segmentation</span>
+            </div>
+            <div class="demographics-grid">
+                <div class="chart-container demo-chart">
+                    <div class="chart-header">
+                        <h3>Distribution</h3>
+                        <span class="chart-subtitle">Attendee Breakdown</span>
+                    </div>
+                    <canvas id="demographicsChart"></canvas>
+                </div>
+                <div class="demographics-stats" id="demographicsStats"></div>
+            </div>
+        </section>
+
+        <!-- Predictions Section -->
+        <section class="predictions-section animate-in" style="--delay: 0.6s">
+            <div class="section-header">
+                <h2><i class="fas fa-crystal-ball"></i> Predictive Analytics</h2>
+                <span class="section-badge">ML Forecast</span>
+            </div>
+            <div class="predictions-grid" id="predictionsGrid">
+                <div class="loading">Loading predictions...</div>
+            </div>
+        </section>
+
+        <!-- Events Table -->
+        <section class="table-section animate-in" style="--delay: 0.65s">
+            <div class="section-header">
+                <h2><i class="fas fa-table-list"></i> Event History</h2>
+                <div class="section-actions">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="tableSearch" placeholder="Search events..." onkeyup="filterTable()">
+                    </div>
+                    <button class="export-btn" onclick="exportTableCSV()">
+                        <i class="fas fa-file-export"></i> Export
+                    </button>
+                </div>
+            </div>
+            <div class="table-container">
+                <table class="data-table" id="eventsTable">
+                    <thead>
+                        <tr>
+                            <th onclick="sortTable(0)">Event <i class="fas fa-sort"></i></th>
+                            <th onclick="sortTable(1)">Date <i class="fas fa-sort"></i></th>
+                            <th onclick="sortTable(2)">Type <i class="fas fa-sort"></i></th>
+                            <th onclick="sortTable(3)">Expected <i class="fas fa-sort"></i></th>
+                            <th onclick="sortTable(4)">Actual <i class="fas fa-sort"></i></th>
+                            <th onclick="sortTable(5)">Rate <i class="fas fa-sort"></i></th>
+                        </tr>
+                    </thead>
+                    <tbody id="eventsTableBody"></tbody>
+                </table>
+            </div>
+            <div class="table-footer">
+                <span id="tableInfo">Showing all events</span>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="dashboard-footer">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div>
+                        <p class="footer-title">Event<span class="footer-accent">Pulse</span></p>
+                        <p class="footer-subtitle">Powered by OpenAI GPT-4o</p>
+                    </div>
+                </div>
+                <div class="footer-stats">
+                    <div class="footer-stat">
+                        <span class="stat-value" id="footerEvents">0</span>
+                        <span class="stat-label">Events</span>
+                    </div>
+                    <div class="footer-stat">
+                        <span class="stat-value" id="footerAttendees">0</span>
+                        <span class="stat-label">Attendees</span>
+                    </div>
+                </div>
+                <div class="footer-meta">
+                    <span class="version-badge">v3.0</span>
+                    <div class="footer-time">
+                        <i class="fas fa-clock"></i>
+                        <span id="lastUpdated">--</span>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
